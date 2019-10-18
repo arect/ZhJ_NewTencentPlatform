@@ -1,0 +1,2 @@
+# ZhJ_NewTencentPlatform
+吉林大学软件学院2018级课程设计作业，类似于腾讯的平台
