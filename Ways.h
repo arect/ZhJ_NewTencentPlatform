@@ -1,4 +1,4 @@
-/*³£ÓÃº¯Êý*/
+/*å¸¸ç”¨å‡½æ•°*/
 #pragma once
 #include<iostream>
 #include<fstream>
@@ -6,7 +6,7 @@
 #include<vector>
 #include<time.h>
 using namespace std;
-//×Ö·û´®×ªÊý×Ö ´íÎó·µ»Ø0
+//å­—ç¬¦ä¸²è½¬æ•°å­— é”™è¯¯è¿”å›ž0
 int Str2Num(const string a) {
 	int num = 0;
 	for (unsigned int i = 1; i < a.size(); i++) {
@@ -29,7 +29,7 @@ int Str2Num(const string a) {
 	}
 	return 0;
 }
-//Êý×Ö×ª×Ö·û
+//æ•°å­—è½¬å­—ç¬¦
 string Num2Str(const int c) {
 	string b;
 	int a = c;
@@ -41,7 +41,7 @@ string Num2Str(const int c) {
 	}
 	return b;
 }
-//ÈÕÖ¾
+//æ—¥å¿—
 void WriteLog(const string a) {
 	ofstream Log;
 	Log.open("Log.txt", ios::app);
@@ -55,6 +55,6 @@ void WriteLog(const string a) {
 		Log.close();
 	}
 	else {
-		cout << "ÈÕÖ¾Æô¶¯Ê§°Ü";
+		cout << "æ—¥å¿—å¯åŠ¨å¤±è´¥";
 	}
 }

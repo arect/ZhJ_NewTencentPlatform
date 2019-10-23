@@ -1,5 +1,5 @@
-/*Ê±¼äÀà
-/*±ã½İµØ¹ÜÀíÊ±¼ä
+/*æ—¶é—´ç±»
+/*ä¾¿æ·åœ°ç®¡ç†æ—¶é—´
 */
 #pragma once
 #include<iostream>
@@ -21,19 +21,19 @@ public:
 		Day = now_time.tm_mday;
 	}
 	~class_Time(){}
-	//ĞŞ¸ÄÄê·İ
+	//ä¿®æ”¹å¹´ä»½
 	int Modify_Year(const int a) {
 		if (1900 <= a && a <= 2020)
 			Year = a;
 		return Year;
 	}
-	//ĞŞ¸ÄÔÂ·İ
+	//ä¿®æ”¹æœˆä»½
 	int Modify_Mon(const int a) {
 		if (1 <= a && a <= 12)
 			Mon = a;
 		return Mon;
 	}
-	//ĞŞ¸ÄÈÕ×Ó
+	//ä¿®æ”¹æ—¥å­
 	int Modify_Day(const int a) {
 		if ((Mon == 1 || Mon == 3 || Mon == 5 || Mon == 7 || Mon == 8 || Mon == 10 || Mon == 12) && 1 <= a && a <= 31)
 			Day = a;
@@ -50,7 +50,7 @@ public:
 		}
 		return Day;
 	}
-	//·µ»ØÈÕÆÚ
+	//è¿”å›æ—¥æœŸ
 	int OutDate() {
 		return Year * 10000 + Mon * 100 + Day;
 	}
