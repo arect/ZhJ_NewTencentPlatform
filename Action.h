@@ -825,11 +825,13 @@ void QQAction(class_PlatformBody* p) {
 				delete(Admin);
 			}
 			else {
-				Locate(XLocation, YLocation++);
+				Locate(XLocation, YLocation);
 				cout << "无未读消息";
 				Sleep(1000);
+				Locate(XLocation, YLocation++);
+				cout << "个人信息    ";
 				QQInfoCard_2(Str2Num((*p).ReturnInfo("PlatformID")), 1);
-				Locate(XLocation - 1, 12);
+				Locate(XLocation, 12);
 				cout << "按下y修改绑定的微信";
 				if (getchar() == 'y') {
 					YLocation = 15;
@@ -839,25 +841,43 @@ void QQAction(class_PlatformBody* p) {
 					cin >> aaa;
 					class_Admin* Admin;
 					Admin = new(class_Admin);
-					Locate(60, 19);
 					if (((*Admin).FindMember(aaa) / 10) % 10 == 3) {
-						if ((*p).ReturnInfo("BindingID").empty());
-						else {
-							class_PlatformBody wewe("login");
-							wewe.ReadNew((*Admin).ReturnPlatformID((*p).ReturnInfo("BindingID")));
-							wewe.ModifyBindingID(-10);
-							wewe.SaveThis();
-						}
-						(*p).ModifyBindingID((*Admin).ReturnPlatformID(aaa));
-						class_PlatformBody wechat("login");
-						wechat.ReadNew((*Admin).ReturnPlatformID(aaa));
-						wechat.ModifyBindingID(Str2Num((*p).ReturnInfo("PlatformID")));
-						wechat.SaveThis();
-						(*p).SaveThis();
-						cout << "成功";
-						WriteLog("改绑微信" + aaa);
+						Locate(61, 19);
+						cout << "输入被绑定的账户的密码：";
+						string bbb = "$empty$";
+						//验证密码
+						do {
+							cin >> bbb;
+							if (bbb.compare("$exit$") == 0) {
+								break;
+							}
+							if (bbb.compare(GetLoginInfo(Num2Str((*Admin).ReturnPlatformID(aaa)), "Password")) == 0) {
+								if ((*p).ReturnInfo("BindingID").empty());
+								else {
+									class_PlatformBody wewe("login");
+									wewe.ReadNew((*Admin).ReturnPlatformID((*p).ReturnInfo("BindingID")));
+									wewe.ModifyBindingID(-10);
+									wewe.SaveThis();
+								}
+								(*p).ModifyBindingID((*Admin).ReturnPlatformID(aaa));
+								class_PlatformBody wechat("login");
+								wechat.ReadNew((*Admin).ReturnPlatformID(aaa));
+								wechat.ModifyBindingID(Str2Num((*p).ReturnInfo("PlatformID")));
+								wechat.SaveThis();
+								(*p).SaveThis();
+								Locate(61, 20);
+								cout << "成功";
+								WriteLog("改绑微信" + aaa);
+								break;
+							}
+							Locate(61, 19);
+							cout << "                                         ";
+							Locate(61, 19);
+							cout << "密码错误：";
+						} while (bbb.compare("$exit$") == 0 || bbb.compare(GetLoginInfo(Num2Str((*Admin).ReturnPlatformID(aaa)), "Password")) == 0);
 					}
 					else {
+						Locate(61, 20);
 						cout << "微信号不存在";
 					}
 					Sleep(1200);
@@ -1534,14 +1554,16 @@ void WeChatAction(class_PlatformBody* p) {
 				delete(Admin);
 			}
 			else {
-				Locate(XLocation, YLocation++);
+				Locate(XLocation, YLocation);
 				cout << "无未读消息";
 				Sleep(1000);
+				Locate(XLocation, YLocation++);
+				cout << "个人信息    ";
 				WeChatInfoCard_2(Str2Num((*p).ReturnInfo("PlatformID")), 0);
-				Locate(XLocation - 1, 12);
+				Locate(XLocation, 11);
 				cout << "按下y修改绑定的QQ";
 				if (getchar() == 'y') {
-					YLocation = 15;
+					YLocation = 14;
 					XLocation = 60;
 					OutputBox(3, 41);
 					Locate(62, 16);
@@ -1550,23 +1572,42 @@ void WeChatAction(class_PlatformBody* p) {
 					Admin = new(class_Admin);
 					Locate(60, 19);
 					if (((*Admin).FindMember(aaa) / 10) % 10 == 2) {
-						if ((*p).ReturnInfo("BindingID").empty());
-						else {
-							class_PlatformBody qqq("login");
-							qqq.ReadNew((*Admin).ReturnPlatformID((*p).ReturnInfo("BindingID")));
-							qqq.ModifyBindingID(-10);
-							qqq.SaveThis();
-						}
-						(*p).ModifyBindingID((*Admin).ReturnPlatformID(aaa));
-						class_PlatformBody qq("login");
-						qq.ReadNew((*Admin).ReturnPlatformID(aaa));
-						qq.ModifyBindingID(Str2Num((*p).ReturnInfo("PlatformID")));
-						qq.SaveThis();
-						(*p).SaveThis();
-						cout << "成功";
-						WriteLog("改绑" + aaa);
+						Locate(61, 19);
+						cout << "输入被绑定的账户的密码：";
+						string bbb = "$empty$";
+						//验证密码
+						do {
+							cin >> bbb;
+							if (bbb.compare("$exit$") == 0) {
+								break;
+							}
+							if (bbb.compare(GetLoginInfo(Num2Str((*Admin).ReturnPlatformID(aaa)), "Password")) == 0) {
+								if ((*p).ReturnInfo("BindingID").empty());
+								else {
+									class_PlatformBody qqq("login");
+									qqq.ReadNew((*Admin).ReturnPlatformID((*p).ReturnInfo("BindingID")));
+									qqq.ModifyBindingID(-10);
+									qqq.SaveThis();
+								}
+								(*p).ModifyBindingID((*Admin).ReturnPlatformID(aaa));
+								class_PlatformBody qq("login");
+								qq.ReadNew((*Admin).ReturnPlatformID(aaa));
+								qq.ModifyBindingID(Str2Num((*p).ReturnInfo("PlatformID")));
+								qq.SaveThis();
+								(*p).SaveThis();
+								Locate(61, 20);
+								cout << "成功";
+								WriteLog("改绑" + aaa);
+								break;
+							}
+							Locate(61, 19);
+							cout << "                                         ";
+							Locate(61, 19);
+							cout << "密码错误：";
+						} while (bbb.compare("$exit$") == 0|| bbb.compare(GetLoginInfo(Num2Str((*Admin).ReturnPlatformID(aaa)), "Password")) == 0);
 					}
 					else {
+						Locate(61, 20);
 						cout << "QQ号不存在";
 					}
 					Sleep(1200);

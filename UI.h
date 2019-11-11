@@ -836,7 +836,7 @@ void WeChatInfoCard(const int ID, const int a) {
 }
 void WeChatInfoCard_2(const int ID, const int a) {
 	XLocation = 60;
-	YLocation = 4 + a * 8;
+	YLocation = 5 + a * 8;
 	OutputBox(8, 41);
 	YLocation = 4 + a * 8;
 	XLocation = 64;
